@@ -1,16 +1,6 @@
 # Mathematical Foundation and Theory
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Data Diagnostics Framework](#data-diagnostics-framework)
-3. [Univariate GARCH Models](#univariate-garch-models)
-4. [Dynamic Conditional Correlation (DCC)](#dynamic-conditional-correlation-dcc)
-5. [Value at Risk (VaR) Calculation](#value-at-risk-var-calculation)
-6. [Model Validation and Testing](#model-validation-and-testing)
-7. [Implementation Considerations](#implementation-considerations)
-8. [References](#references)
 
----
 
 ## Introduction
 
@@ -314,29 +304,7 @@ eigenvals = np.maximum(eigenvals, regularization)
 Q_t = eigenvecs @ np.diag(eigenvals) @ eigenvecs.T
 ```
 
-### Multithreading Architecture
 
-**Parallel GARCH Fitting:**
-- Each asset's GARCH model estimated independently
-- ThreadPoolExecutor with automatic CPU detection
-- Thread-safe progress reporting
-- Fallback mechanisms for failed estimations
-
-**Performance Optimization:**
-- Typical speedup: 70-80% with 4+ cores
-- Memory efficiency through shared data structures
-- Optimized matrix operations using NumPy/SciPy
-
-### Consistent Windowing
-
-**Rolling Window Strategy:**
-```python
-# Maintain exact window size throughout backtesting
-if len(window) > self.window_size:
-    window = window.iloc[-self.window_size:]  # Keep exactly window_size days
-```
-
-This ensures consistent sample sizes and comparable model estimates across time.
 
 ### Diagnostic Integration
 
@@ -348,20 +316,6 @@ This ensures consistent sample sizes and comparable model estimates across time.
 
 ---
 
-## Computational Complexity
-
-### Time Complexity
-
-**GARCH Estimation:** $O(T \cdot \log T)$ per asset (with T observations)
-**DCC Estimation:** $O(T \cdot n^3)$ where n is number of assets
-**Parallel Efficiency:** Near-linear scaling with number of CPU cores
-
-### Memory Requirements
-
-**Storage:** $O(T \cdot n^2)$ for correlation matrices
-**Peak Memory:** Approximately 50-100 MB for typical portfolio sizes
-
----
 
 ## Extensions and Future Work
 
@@ -389,11 +343,7 @@ This ensures consistent sample sizes and comparable model estimates across time.
 
 3. **Christoffersen, P. (2003)**. *Elements of Financial Risk Management*. Academic Press.
 
-4. **Basel Committee on Banking Supervision (2006)**. "International Convergence of Capital Measurement and Capital Standards: A Revised Framework." Bank for International Settlements.
 
-5. **Kupiec, P.H. (1995)**. "Techniques for Verifying the Accuracy of Risk Measurement Models." *Journal of Derivatives*, 2(2), 73-84.
-
----
 
 ## Mathematical Notation
 
