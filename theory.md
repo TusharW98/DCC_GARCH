@@ -30,7 +30,7 @@ Where:
 - $H_1$: $\gamma < 0$ (stationary)
 
 **KPSS Test:**
-$$y_t = \xi t + r_t + \epsilon_t$$
+$$y_t =  \xi t + r_t + \epsilon_t$$
 $$r_t = r_{t-1} + u_t$$
 
 Where:
