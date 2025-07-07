@@ -101,9 +101,9 @@ returns = np.log(data / data.shift(1)).dropna()
 model = DCCGARCHVAR(
     weights=[0.4, 0.35, 0.25],           # Portfolio weights
     alphas=[0.01, 0.05, 0.1],            # VaR confidence levels
-    window_size=500,                      # Rolling window size
+    window_size=50,                      # Rolling window size
     dist='auto',                          # Auto-select distribution
-    refit_frequency=5,                    # Refit every 5 days
+    refit_frequency=2,                    # Refit every 2 days
     enable_diagnostics=True,              # Enable diagnostic system
     n_threads=4                           # Parallel processing threads
 )
@@ -131,9 +131,9 @@ model.plot_results(results)
 DCCGARCHVAR(
     weights=[0.4, 0.3, 0.3],             # Portfolio weights (must sum to 1)
     alphas=[0.01, 0.025, 0.05, 0.1],     # Multiple VaR levels
-    window_size=252,                      # 1-year rolling window
+    window_size=50,                      # 50 day rolling window
     dist='auto',                          # 'auto', 't', 'normal', 'skewed'
-    refit_frequency=10,                   # Refit model every N days
+    refit_frequency=1,                   # Refit model every N days
     scale_factor=100,                     # Return scaling (100 for %)
     enable_diagnostics=True,              # Enable diagnostic engine
     n_threads=None                        # Auto-detect CPU cores
